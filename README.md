@@ -1,12 +1,14 @@
-Full Stack To-Do Application
-This is a Full Stack To-Do Application built using Node.js, Express, MongoDB for the backend and React with Material UI for the frontend. The application allows users to register, login, create tasks, update tasks, mark tasks as complete, and delete tasks.
+# 📋 Full Stack To-Do Application
 
-🌐 Live Demo
-Frontend: https://to-do-task-akash.netlify.app/
-Backend: https://full-stack-todo-application-pfeh.onrender.com
-📂 Project Structure
-plaintext
-Copy code
+A Full Stack To-Do Application built using **Node.js**, **Express**, **MongoDB** for the backend, and **React** with **Material UI** for the frontend. The application includes user registration, login, task creation, updates, and management features with a responsive UI.
+
+## 🌐 Live Demo
+
+- **Live Demo**: [https://to-do-task-akash.netlify.app/](https://to-do-task-akash.netlify.app/)
+
+## 📂 Project Structure
+
+```plaintext
 Full-Stack-ToDo-Application/
 ├── backend/
 │   ├── controllers/
@@ -21,98 +23,83 @@ Full-Stack-ToDo-Application/
 │   ├── .env
 │   ├── package.json
 │   └── vite.config.js
-└── README.md
+└── README.md ```
+
 🛠️ Tech Stack
 Frontend: React, Material UI
 Backend: Node.js, Express, MongoDB
 Deployment: Netlify (Frontend), Render (Backend)
+
 🚀 Features
 User Authentication (Register/Login)
 CRUD Operations for Tasks
 Task Management (Create, Update, Delete, Mark Complete)
-Responsive UI using Material UI
+Responsive UI with Material UI components
 🖥️ Backend Setup
 Prerequisites
 Node.js (v18 or above)
 MongoDB (Local or MongoDB Atlas)
 Git
 Instructions
-Clone the repository:
 
-bash
-Copy code
+1. Clone the repository:
 git clone https://github.com/iakash-singh/Full-Stack-ToDo-Application.git
 cd Full-Stack-ToDo-Application/backend
-Install dependencies:
 
-bash
-Copy code
+2. Install dependencies:
 npm install
-Configure environment variables:
 
-Create a .env file in the backend/ directory:
-
-plaintext
-Copy code
+3. Configure environment variables:
+Create a .env file in the backend/ directory with the following content:
 PORT=3000
 MONGODB_URI=<your-mongodb-connection-string>
 JWT_SECRET=<your-jwt-secret>
-Run the server:
 
-bash
-Copy code
+4. Run the server:
 npm start
 The backend server will start on http://localhost:3000.
 
 🛠️ Backend Deployment
-The backend is deployed on Render. You can configure deployment using your GitHub repository by linking it to Render.
-
+The backend is deployed on Render. Link your GitHub repository to Render for continuous deployment.
 Deployment URL: https://full-stack-todo-application-pfeh.onrender.com
 Environment Variables (on Render):
 MONGODB_URI: Your MongoDB connection string.
 JWT_SECRET: Your JWT secret key.
+
 🖼️ Frontend Setup
 Prerequisites
 Node.js (v18 or above)
 Vite (for React project setup)
+
 Instructions
-Navigate to the frontend directory:
-
-bash
-Copy code
+1. Navigate to the frontend directory:
 cd ../front_end
-Install dependencies:
 
-bash
-Copy code
+2. Install dependencies:
 npm install
-Configure environment variables:
 
+3. Configure environment variables:
 Create a .env file in the front_end/ directory:
-
-plaintext
-Copy code
 VITE_API_URL=https://full-stack-todo-application-pfeh.onrender.com
-Run the frontend development server:
 
-bash
-Copy code
+4. Run the frontend development server:
 npm run dev
 The frontend will be running on http://localhost:5173.
 
 🛠️ Frontend Deployment
-The frontend is deployed on Netlify. You can connect your GitHub repository to Netlify for continuous deployment.
-
+The frontend is deployed on Netlify. Connect your GitHub repository to Netlify for continuous deployment.
 Deployment URL: https://to-do-task-akash.netlify.app/
 Build Settings:
 Base Directory: front_end
 Build Command: npm run build
 Publish Directory: front_end/dist
+
 🔄 Redeploying Your Frontend on Netlify
 Go to the Netlify Dashboard and select your site.
-Click on the "Deploys" tab.
-Scroll down to the "Trigger deploy" section.
-Click "Clear cache and deploy site" to redeploy the frontend.
+Click on the Deploys tab.
+Scroll down to the Trigger deploy section.
+Click Clear cache and deploy site.
+
 🌟 API Endpoints
 Authentication
 POST /api/users/register - Register a new user
@@ -124,12 +111,20 @@ PUT /api/tasks/:id - Update a task
 DELETE /api/tasks/:id - Delete a task
 PUT /api/tasks/:id/complete - Mark a task as complete
 🤝 Contributing
-Contributions are welcome! Feel free to fork the repository and submit a pull request.
+Contributions are welcome! Please follow these steps:
 
-Fork the repository.
-Create a new branch (git checkout -b feature-branch).
-Make your changes and commit (git commit -m 'Add feature').
-Push to the branch (git push origin feature-branch).
-Open a pull request.
+1. Fork the repository.
+2. Create a new branch:
+  git checkout -b feature-branch
+3.Make your changes and commit:
+  git commit -m 'Add new feature
+4. Push to the branch:
+  git push origin feature-branch
+5. Open a pull request.
+
 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+💬 Feedback
+If you have any feedback, please reach out at akashsingh7202@gmail.com.
+
