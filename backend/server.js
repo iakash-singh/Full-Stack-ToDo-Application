@@ -16,7 +16,7 @@ app.use(cors({
     origin: ["https://to-do-task-akash.netlify.app/"],
     credentials: true,
   }));
-app.use(cors());
+// app.use(cors());
 app.use(helmet());
 app.use(express.json());
 app.use(errorMiddleware);
