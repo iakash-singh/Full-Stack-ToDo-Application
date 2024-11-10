@@ -110,6 +110,7 @@ POST /api/tasks - Create a new task
 PUT /api/tasks/:id - Update a task
 DELETE /api/tasks/:id - Delete a task
 PUT /api/tasks/:id/complete - Mark a task as complete
+
 🤝 Contributing
 Contributions are welcome! Please follow these steps:
 
