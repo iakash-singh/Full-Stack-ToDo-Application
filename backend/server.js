@@ -10,10 +10,12 @@ const app = express();
 
 connectDatabase();
 
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
 app.use(errorMiddleware);
+
 
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/tasks", require("./routes/taskRoutes"));
