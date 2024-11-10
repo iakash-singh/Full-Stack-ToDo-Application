@@ -1,29 +1,28 @@
 import React, { useContext } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+import { Container, Typography, Button, Stack } from "@mui/material";
 
 const Home = () => {
-    console.log("home");
   const { isAuthenticated } = useContext(AuthContext);
-
 
   if (isAuthenticated) {
     return <Navigate to="/tasks" />;
   }
 
   return (
-    <div className="home-page">
-      <h1>Welcome to the Fullstack To-Do App</h1>
-      <p>Manage your tasks efficiently with our simple and intuitive interface.</p>
-      <div className="home-buttons">
+    <Container>
+      <Typography variant="h3" gutterBottom>Welcome to the Fullstack To-Do App</Typography>
+      <Typography variant="body1">Manage your tasks efficiently with our simple and intuitive interface.</Typography>
+      <Stack spacing={2} direction="row" sx={{ mt: 2 }}>
         <Link to="/register">
-          <button>Register</button>
+          <Button variant="contained" color="primary">Register</Button>
         </Link>
         <Link to="/login">
-          <button>Login</button>
+          <Button variant="contained" color="secondary">Login</Button>
         </Link>
-      </div>
-    </div>
+      </Stack>
+    </Container>
   );
 };
 

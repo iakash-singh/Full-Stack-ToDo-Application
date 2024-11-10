@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import TaskList from "../components/Task/task_list";
 import { AuthContext } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
+import { Container, Button, Typography } from "@mui/material";
 
 const Tasks = () => {
   const { logout } = useContext(AuthContext);
@@ -14,11 +15,13 @@ const Tasks = () => {
   };
 
   return (
-    <div>
-      <h2>Your Tasks</h2>
-      <button onClick={handleLogout}>Logout</button>
+    <Container>
+      <Typography variant="h4" gutterBottom>Your Tasks</Typography>
+      <Button onClick={handleLogout} variant="contained" color="error" sx={{ mb: 2 }}>
+        Logout
+      </Button>
       <TaskList />
-    </div>
+    </Container>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { TextField, Button, Container, Typography } from "@mui/material";
 
 const Register = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -13,28 +14,40 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("Sending registration request:", formData);
-      const response = await axios.post("http://localhost:3000/api/users/register", formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log("Registration response:", response.data);
+      await axios.post("http://localhost:3000/api/users/register", formData);
       alert("User registered successfully!");
-
       navigate("/login");
     } catch (error) {
-      console.error("Registration error:", error.response?.data?.message || error.message);
       alert("Registration failed: " + (error.response?.data?.message || error.message));
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="username" placeholder="Username" onChange={handleChange} required />
-      <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
-      <button type="submit">Register</button>
-    </form>
+    <Container>
+      <Typography variant="h4" gutterBottom>Register</Typography>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          name="username"
+          label="Username"
+          fullWidth
+          margin="normal"
+          onChange={handleChange}
+          required
+        />
+        <TextField
+          name="password"
+          label="Password"
+          type="password"
+          fullWidth
+          margin="normal"
+          onChange={handleChange}
+          required
+        />
+        <Button type="submit" variant="contained" color="primary" fullWidth>
+          Register
+        </Button>
+      </form>
+    </Container>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { TextField, Button, MenuItem, Container, Typography } from "@mui/material";
 
 const TaskInputForm = ({ refreshTasks }) => {
   const [taskDetails, setTaskDetails] = useState({
@@ -16,32 +17,66 @@ const TaskInputForm = ({ refreshTasks }) => {
   const handleTaskSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("Adding new task:", taskDetails);
       await axios.post("http://localhost:3000/api/tasks", taskDetails, {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      console.log("Task added successfully!");
       refreshTasks();
       setTaskDetails({ title: "", desc: "", level: "low", dueDate: "" });
     } catch (error) {
-      console.log("Error adding task:", error.response?.data?.message || error.message);
+      alert("Error adding task: " + (error.response?.data?.message || error.message));
     }
   };
 
   return (
-    <form onSubmit={handleTaskSubmit}>
-      <input name="title" placeholder="Title" value={taskDetails.title} onChange={handleInputChange} required />
-      <input name="desc" placeholder="Description" value={taskDetails.desc} onChange={handleInputChange} />
-      <select name="level" value={taskDetails.level} onChange={handleInputChange}>
-        <option value="high">High</option>
-        <option value="low">Low</option>
-      </select>
-      <input name="dueDate" type="date" value={taskDetails.dueDate} onChange={handleInputChange} />
-      <button type="submit">Add Task</button>
-    </form>
+    <Container>
+      <Typography variant="h5">Add New Task</Typography>
+      <form onSubmit={handleTaskSubmit}>
+        <TextField
+          name="title"
+          label="Title"
+          fullWidth
+          margin="normal"
+          value={taskDetails.title}
+          onChange={handleInputChange}
+          required
+        />
+        <TextField
+          name="desc"
+          label="Description"
+          fullWidth
+          margin="normal"
+          value={taskDetails.desc}
+          onChange={handleInputChange}
+        />
+        <TextField
+          select
+          name="level"
+          label="Priority"
+          fullWidth
+          margin="normal"
+          value={taskDetails.level}
+          onChange={handleInputChange}
+        >
+          <MenuItem value="high">High</MenuItem>
+          <MenuItem value="low">Low</MenuItem>
+        </TextField>
+        <TextField
+          name="dueDate"
+          label="Due Date"
+          type="date"
+          fullWidth
+          margin="normal"
+          value={taskDetails.dueDate}
+          onChange={handleInputChange}
+          InputLabelProps={{ shrink: true }}
+        />
+        <Button type="submit" variant="contained" color="primary" fullWidth>
+          Add Task
+        </Button>
+      </form>
+    </Container>
   );
 };
 
