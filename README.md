@@ -34,7 +34,6 @@ Full-Stack-ToDo-Application/
 └── README.md ```
 
 
-![Screenshot 2024-11-10 220204](https://github.com/user-attachments/assets/115f42f8-ad65-4da2-acc4-7646521a5f25)
 
 
 
