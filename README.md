@@ -1,3 +1,11 @@
+# Screen Shots
+![Screenshot 2024-11-10 220204](https://github.com/user-attachments/assets/12f5242f-2c84-49c9-a29d-4ae92fb05125)
+![Screenshot 2024-11-10 220242](https://github.com/user-attachments/assets/abb9cbee-4982-4913-8de9-54b0fd8254a6)
+![Screenshot 2024-11-10 220306](https://github.com/user-attachments/assets/16ebb2d0-ccf3-4040-9d37-f47bb2c2e1c9)
+![Screenshot 2024-11-10 220433](https://github.com/user-attachments/assets/2b42e4e8-6741-4620-a2dc-01f507a2f800)
+![Screenshot 2024-11-10 220502](https://github.com/user-attachments/assets/4e33105c-8558-4e1e-aadc-a6de73a746db)
+![Screenshot 2024-11-10 220518](https://github.com/user-attachments/assets/e6ec8be5-a980-4dcf-9c63-4a72cbcaf359)
+
 # 📋 Full Stack To-Do Application
 
 A Full Stack To-Do Application built using **Node.js**, **Express**, **MongoDB** for the backend, and **React** with **Material UI** for the frontend. The application includes user registration, login, task creation, updates, and management features with a responsive UI.
@@ -24,6 +32,11 @@ Full-Stack-ToDo-Application/
 │   ├── package.json
 │   └── vite.config.js
 └── README.md ```
+
+
+![Screenshot 2024-11-10 220204](https://github.com/user-attachments/assets/115f42f8-ad65-4da2-acc4-7646521a5f25)
+
+
 
 🛠️ Tech Stack
 Frontend: React, Material UI
