@@ -123,6 +123,37 @@ PUT /api/tasks/:id - Update a task
 DELETE /api/tasks/:id - Delete a task
 PUT /api/tasks/:id/complete - Mark a task as complete
 
+🚀 Deployment Challenges & Solutions
+1. Database Setup
+Challenge: MongoDB connection issues
+Solution: Switched to MongoDB Atlas for better reliability
+
+2. API Communication
+Challenge: CORS errors between Netlify frontend & Render backend
+Solution: Configured CORS headers in Express
+
+3. Backend (Render)
+Challenge: ENV variables not working
+Solution: Added MONGODB_URI & JWT_SECRET in Render dashboard
+
+4. Frontend (Netlify)
+Challenge: Build failing due to directory structure
+Solution: Updated config:
+  Base Directory: front_end
+  Publish Directory: front_end/dist
+
+5. Development Workflow
+Challenge: Managing API URLs across environments
+Solution: Used VITE_API_URL in environment config
+
+6. UI Development
+Challenge: Inconsistent responsive design
+Solution: Improved Material UI layouts & spacing
+
+7. Deployment Pipeline
+Challenge: Manual deployments taking time
+Solution: Set up auto-deployment via GitHub for both services
+
 🤝 Contributing
 Contributions are welcome! Please follow these steps:
 
