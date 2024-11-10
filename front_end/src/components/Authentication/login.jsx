@@ -9,6 +9,8 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const API_URL = `${import.meta.env.VITE_API_URL}/api/users/login`
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -16,7 +18,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/users/login", formData);
+      const response = await axios.post(API_URL, formData);
       login(response.data.token);
       alert("Login successful!");
       navigate("/tasks");

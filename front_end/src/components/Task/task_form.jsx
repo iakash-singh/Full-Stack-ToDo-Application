@@ -5,7 +5,7 @@ import { TextField, Button, MenuItem, Container, Typography } from "@mui/materia
 const TaskInputForm = ({ refreshTasks }) => {
   const [taskDetails, setTaskDetails] = useState({
     title: "",
-    desc: "",
+    description: "",
     level: "low",
     dueDate: "",
   });
@@ -17,13 +17,14 @@ const TaskInputForm = ({ refreshTasks }) => {
   const handleTaskSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/tasks", taskDetails, {
+      
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/tasks`, taskDetails, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
       refreshTasks();
-      setTaskDetails({ title: "", desc: "", level: "low", dueDate: "" });
+      setTaskDetails({ title: "", description: "", level: "low", dueDate: "" });
     } catch (error) {
       alert("Error adding task: " + (error.response?.data?.message || error.message));
     }
@@ -43,11 +44,11 @@ const TaskInputForm = ({ refreshTasks }) => {
           required
         />
         <TextField
-          name="desc"
+          name="description"
           label="Description"
           fullWidth
           margin="normal"
-          value={taskDetails.desc}
+          value={taskDetails.description}
           onChange={handleInputChange}
         />
         <TextField

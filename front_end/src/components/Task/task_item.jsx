@@ -34,7 +34,8 @@ const TaskItem = ({ task, fetchTasks }) => {
   const handleUpdate = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/api/tasks/${task._id}`,
+        
+        `${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`,
         updatedTask,
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );

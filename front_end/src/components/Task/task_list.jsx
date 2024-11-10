@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TaskItem from "./task_item";
-import TaskForm from "./task_form";
+import TaskInputForm from "./task_form";
+import { Container, Typography, Grid } from "@mui/material";
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/tasks", {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/tasks`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -16,20 +17,17 @@ const TaskList = () => {
       const sortedTasks = sortTasks(response.data);
       setTasks(sortedTasks);
     } catch (error) {
-      console.error("Error fetching tasks:", error.response?.data?.message || error.message);
-      alert("Failed to fetch tasks");
+      alert("Error fetching tasks: " + (error.response?.data?.message || error.message));
     }
   };
 
   const sortTasks = (tasks) => {
-    
-    return tasks
-      .sort((a, b) => {
-        if (a.completed !== b.completed) {
-          return a.completed ? 1 : -1; 
-        }
-        return a.priority === "high" && b.priority === "low" ? -1 : 1; 
-      });
+    return tasks.sort((a, b) => {
+      if (a.completed !== b.completed) {
+        return a.completed ? 1 : -1; // Move completed tasks to the bottom
+      }
+      return a.level === "high" && b.level === "low" ? -1 : 1; // Sort by priority
+    });
   };
 
   useEffect(() => {
@@ -37,16 +35,25 @@ const TaskList = () => {
   }, []);
 
   return (
-    <div>
-      <TaskForm fetchTasks={fetchTasks} />
-      <div>
+    <Container>
+      <Typography variant="h4" align="center" gutterBottom>
+        Task List
+      </Typography>
+      <TaskInputForm refreshTasks={fetchTasks} />
+      <Grid container spacing={2}>
         {tasks.length > 0 ? (
-          tasks.map((task) => <TaskItem key={task._id} task={task} fetchTasks={fetchTasks} />)
+          tasks.map((task) => (
+            <Grid item xs={12} md={6} key={task._id}>
+              <TaskItem task={task} fetchTasks={fetchTasks} />
+            </Grid>
+          ))
         ) : (
-          <p>No tasks found.</p>
+          <Typography align="center" color="textSecondary">
+            No tasks available. Add a new task to get started.
+          </Typography>
         )}
-      </div>
-    </div>
+      </Grid>
+    </Container>
   );
 };
 
