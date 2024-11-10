@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Card, CardContent, Typography, Button, TextField, Select, MenuItem } from "@mui/material";
+import { Card, CardContent, Typography, Button, TextField, Select, MenuItem, Box } from "@mui/material";
 
 const TaskItem = ({ task, fetchTasks }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -34,7 +34,6 @@ const TaskItem = ({ task, fetchTasks }) => {
   const handleUpdate = async () => {
     try {
       await axios.put(
-        
         `${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`,
         updatedTask,
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
@@ -53,10 +52,10 @@ const TaskItem = ({ task, fetchTasks }) => {
   };
 
   return (
-    <Card variant="outlined" sx={{ mb: 2 }}>
+    <Card variant="outlined" sx={{ mb: 2, borderRadius: 2 }}>
       <CardContent>
         {isEditing ? (
-          <>
+          <Box>
             <TextField
               name="title"
               label="Title"
@@ -64,6 +63,8 @@ const TaskItem = ({ task, fetchTasks }) => {
               value={updatedTask.title}
               onChange={handleChange}
               margin="normal"
+              variant="outlined"
+              sx={{ borderRadius: 2 }}
             />
             <TextField
               name="description"
@@ -72,6 +73,8 @@ const TaskItem = ({ task, fetchTasks }) => {
               value={updatedTask.description}
               onChange={handleChange}
               margin="normal"
+              variant="outlined"
+              sx={{ borderRadius: 2 }}
             />
             <Select
               name="priority"
@@ -79,6 +82,8 @@ const TaskItem = ({ task, fetchTasks }) => {
               onChange={handleChange}
               fullWidth
               margin="normal"
+              variant="outlined"
+              sx={{ borderRadius: 2 }}
             >
               <MenuItem value="high">High</MenuItem>
               <MenuItem value="low">Low</MenuItem>
@@ -92,30 +97,36 @@ const TaskItem = ({ task, fetchTasks }) => {
               onChange={handleChange}
               InputLabelProps={{ shrink: true }}
               margin="normal"
+              variant="outlined"
+              sx={{ borderRadius: 2 }}
             />
-            <Button onClick={handleUpdate} variant="contained" color="primary">
-              Save
-            </Button>
-            <Button onClick={() => setIsEditing(false)} variant="text">
-              Cancel
-            </Button>
-          </>
+            <Box display="flex" justifyContent="space-between" mt={2}>
+              <Button onClick={handleUpdate} variant="contained" color="primary" sx={{ borderRadius: 2 }}>
+                Save
+              </Button>
+              <Button onClick={() => setIsEditing(false)} variant="text" sx={{ borderRadius: 2 }}>
+                Cancel
+              </Button>
+            </Box>
+          </Box>
         ) : (
-          <>
-            <Typography variant="h6">{task.title}</Typography>
+          <Box>
+            <Typography variant="h6" color="primary">{task.title}</Typography>
             <Typography variant="body1">{task.description || "No description"}</Typography>
             <Typography variant="body2">Priority: {task.priority}</Typography>
             <Typography variant="body2">Due Date: {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : "No due date"}</Typography>
-            <Button onClick={() => setIsEditing(true)} variant="outlined">
-              Edit
-            </Button>
-            <Button onClick={handleDelete} color="error" variant="outlined">
-              Delete
-            </Button>
-            <Button onClick={handleToggleComplete} color="secondary" variant="outlined">
-              {task.completed ? "Mark Incomplete" : "Mark Complete"}
-            </Button>
-          </>
+            <Box display="flex" justifyContent="space-between" mt={2}>
+              <Button onClick={() => setIsEditing(true)} variant="outlined" sx={{ borderRadius: 2 }}>
+                Edit
+              </Button>
+              <Button onClick={handleDelete} color="error" variant="outlined" sx={{ borderRadius: 2 }}>
+                Delete
+              </Button>
+              <Button onClick={handleToggleComplete} color="secondary" variant="outlined" sx={{ borderRadius: 2 }}>
+                {task.completed ? "Mark Incomplete" : "Mark Complete"}
+              </Button>
+            </Box>
+          </Box>
         )}
       </CardContent>
     </Card>
