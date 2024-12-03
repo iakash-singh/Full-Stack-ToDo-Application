@@ -6,7 +6,7 @@ const TaskInputForm = ({ refreshTasks }) => {
   const [taskDetails, setTaskDetails] = useState({
     title: "",
     description: "",
-    level: "low",
+    level: "",
     dueDate: "",
   });
 
