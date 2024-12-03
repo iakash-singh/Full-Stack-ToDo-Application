@@ -8,7 +8,7 @@ const TaskItem = ({ task, fetchTasks }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/tasks/${task._id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       alert("Task deleted successfully!");
@@ -21,7 +21,7 @@ const TaskItem = ({ task, fetchTasks }) => {
   const handleToggleComplete = async () => {
     try {
       await axios.put(
-        `${import.meta.env.VITE_API_URL}/tasks/${task._id}`,
+        `${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`,
         { completed: !task.completed },
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );
